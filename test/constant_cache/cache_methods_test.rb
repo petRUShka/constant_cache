@@ -51,7 +51,7 @@ class CacheMethodsTest < Test::Unit::TestCase
     should "create a constant as a reference to the instance" do
       @cached.name = 'al sharpton'
       @cached.set_instance_as_constant
-      Cached.constants.include?("AL_SHARPTON").should == true
+      Cached.constants.include?(:AL_SHARPTON).should == true
       Cached::AL_SHARPTON.should == @cached
     end
 
@@ -70,7 +70,7 @@ class CacheMethodsTest < Test::Unit::TestCase
     end
 
     should "truncate long constant names" do
-      constant_name = ('a'*20).upcase
+      constant_name = ('a'*20).upcase.to_sym
 
       @cached.name = 'a'*65
       @cached.set_instance_as_constant

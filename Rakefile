@@ -1,8 +1,8 @@
 require 'rubygems'
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 require 'rake/testtask'
 
-require 'lib/constant_cache/version'
+require './lib/constant_cache/version'
 
 spec = Gem::Specification.new do |s|
   s.name             = "constant_cache"
@@ -18,9 +18,9 @@ spec = Gem::Specification.new do |s|
   # s.add_dependency('gem', '~> version')
 end
 
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.gem_spec = spec
-end
+#Rake::GemPackageTask.new(spec) do |pkg|
+#  pkg.gem_spec = spec
+#end
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
